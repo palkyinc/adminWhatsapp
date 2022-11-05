@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
 use App\Mail\TestWhats;
+use App\Custom\MyFunctions;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +20,26 @@ use App\Mail\TestWhats;
 */
 
 Route::get('/', function () {
+    $toSend = new TestWhats();
+    Mail::to('migvicpereyra@hotmail.com')->queue($toSend);
+    MyFunctions::loguear('a', 'whatsresponse.txt', 'contacto');
     return view('welcome');
 });
-Route::get('/mailTest', function () {
+Route::get('/whatssAppWebHoo', function () {
+    if (isset($_REQUEST['hub_mode']) && $_REQUEST['hub_mode'] === 'subscribe' && $_REQUEST['hub_verify_token'] === env('WHATSAPP_TOKEN') ) {
+        $data_return = $_REQUEST['hub_challenge'];
+    } else {
+        $data_return = '';
+    }
     $toSend = new TestWhats();
-    //$toSend->from = env('MAIL_FROM_ADDRESS');
-    //$toSend->assertSeeInHtml('migvicpereyra@hotmail.com');
-    //dd($toSend);
-    //print_r($_SERVER); die;
-    Mail::to('migvicpereyra@hotmail.com')->send($toSend);
-    echo "DONE";
+    Mail::to('migvicpereyra@hotmail.com')->queue($toSend);
+    MyFunctions::loguear('a', 'whatsresponse.txt', 'contacto');
+    return response($data_return, 200);
+});
+Route::post('/whatssAppWebHoo', function (Request $request) {
+    $toSend = new TestWhats($request);
+    Mail::to('migvicpereyra@hotmail.com')->queue($toSend);
+    //MyFunctions::loguear('a', 'whatsresponse.txt', 'contacto');
+    //dd($request->all());
+    return response('', 200);
 });
