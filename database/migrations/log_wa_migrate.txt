@@ -1,0 +1,8 @@
+entry.id
+entry.changes
+entry.changes.field
+entry.changes.value:statuses
+entry.changes.value.messages
+entry.changes.value.contacts
+entry.changes.value.metadata
+entry.changes.value.messaging_product

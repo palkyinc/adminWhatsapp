@@ -8,7 +8,8 @@
     <body>
         @php
         echo "<pre>";
-        //print_r($_SERVER);
+        print_r($sign . "<br>");
+        print_r($_SERVER);
         print_r($server);
         echo "</pre>";
         @endphp

@@ -37,9 +37,17 @@ Route::get('/whatssAppWebHoo', function () {
     return response($data_return, 200);
 });
 Route::post('/whatssAppWebHoo', function (Request $request) {
-    $toSend = new TestWhats($request);
-    Mail::to('migvicpereyra@hotmail.com')->queue($toSend);
+    MyFunctions::loguear('a+', 'entidades.txt', MyFunctions::iterator($request->all()), false);
+    //$toSend = new TestWhats($request);
+    //Mail::to('migvicpereyra@hotmail.com')->queue($toSend);
     //MyFunctions::loguear('a', 'whatsresponse.txt', 'contacto');
     //dd($request->all());
     return response('', 200);
+});
+Route::get('/ordenarEntidades', function() {
+    $data = (MyFunctions::readFile("entidades.txt"));
+    foreach ($data as $key => $value) {
+        MyFunctions::loguear("a+", "entidades_final.txt", $key . "=" . $value, false);
+    }
+    echo "fin";
 });
