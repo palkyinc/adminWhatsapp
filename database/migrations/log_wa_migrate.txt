@@ -1,8 +1,20 @@
-entry.id
-entry.changes
-entry.changes.field
-entry.changes.value:statuses
-entry.changes.value.messages
-entry.changes.value.contacts
-entry.changes.value.metadata
-entry.changes.value.messaging_product
+.object = whatsapp_business_account
+.entry.id = 102282732686707
+.entry.changes.value.messaging_product = whatsapp
+.entry.changes.value.metadata.display_phone_number = 15550804237
+.entry.changes.value.metadata.phone_number_id = 101734582742368
+.entry.changes.value.contacts.profile.name = Migpere
+.entry.changes.value.contacts.wa_id = 5492964516469
+.entry.changes.value.messages.from = 5492964516469
+.entry.changes.value.messages.id = wamid.HBgNNTQ5Mjk2NDUxNjQ2ORUCABIYFDNBMDQ3QkFCQjE4QTM0NUQwRUE4AA==
+.entry.changes.value.messages.timestamp = 1669674280
+.entry.changes.value.messages.text.body = Hola
+.entry.changes.value.messages.type = text
+.entry.changes.field = messages
+
+object
+sender_id
+party_ids
+message
+send
+read

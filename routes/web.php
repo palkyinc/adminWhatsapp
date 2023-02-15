@@ -20,9 +20,6 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    $toSend = new TestWhats();
-    Mail::to('migvicpereyra@hotmail.com')->queue($toSend);
-    MyFunctions::loguear('a', 'whatsresponse.txt', 'contacto');
     return view('welcome');
 });
 Route::get('/whatssAppWebHoo', function () {
